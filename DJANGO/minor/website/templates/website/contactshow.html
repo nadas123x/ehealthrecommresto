@@ -30,11 +30,11 @@
 
 #container{
 	box-shadow: 0 10px 30px 1px rgba(128, 128, 128, 0.31);
-	background: rgba(255, 255, 255, 0.90);
+	background: white;
 	text-align: center;
 	border-radius: 5px;
 	overflow: hidden;
-    margin-left: 20px;
+    margin-left: 60em;
     display: inline-block;
     margin-top: 12%;
 	margin: 2em auto;
@@ -55,7 +55,7 @@
 	padding: 30px;
 	height: 100%;
 	float: left;
-	width: 40%;
+	width: 50%;
 
 }
 
@@ -164,7 +164,7 @@
 .btn .shopping-cart {
 	transform: translateX(-100%);
   position: absolute;
-	background: #333;
+	background: black;
 	z-index: 1;
   left: 0;
   top: 0;
@@ -209,7 +209,10 @@
     left: 0;
     top: 0;
 }
-
+.card__link{
+	color:black;
+	margin-left:-13px;
+  }
 .info h2 {text-align: center}
 .product-image:hover .info{transform: translateX(0);}
 
@@ -221,16 +224,18 @@
  
  {% endblock %}
 
-        {% block homeurl %} "\"{% endblock %}
-        {% block abouturl %} "\meall/" {% endblock %}
-        {% block contacturl %} "\contact/" {% endblock %}
-        {% block mealurl %} "" {% endblock %}
-        {% block orderurl %} "\order/" {% endblock %}
-        {% block mealaffichurl %} "\mealaffich/" {% endblock %}
+    
+ 
+ {% block homeurl %} "\"{% endblock %}
+ {% block abouturl %} "\meal/" {% endblock %}
+ {% block contacturl %} "\contact/" {% endblock %}
+ {% block contactshowurl %} "\contactshow/" {% endblock %}
+ {% block orderurl %} "\order/" {% endblock %}
+ {% block mealaffichurl %} "\mealaffich/" {% endblock %}
 
 
         
-        {% block mealactive %} active {% endblock %}
+        {% block contactactive %} active {% endblock %}
 
    
 {% block body %}
@@ -241,48 +246,36 @@
 
 
 
-<form id="myForm" action="\buy/" method="post">
-{% csrf_token %}
-    <input id="inpt" style="display:none" type="text" name="product_buy">
-</form>
+
 
 {% load static %}
 
 
 
-    {% for meall in meall %}
-
-    {% if meall.Nutrient == 'fiber'  %}
+    {% for contact in contact %}
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <div id="container">	
+
+  <div id="container">	
 	
         <!-- Start	Product details -->
-        &nbsp;&nbsp;&nbsp;   <div class="product-details">
-                
-                <!-- 	Product Name -->
-            <h2 id="name{{ id }}" class="my-3" style="color:rgb(121, 118, 88); font-size: 22px;">{{meall.Name}}</h2>
-            <h5 style="color:rgb(10, 10, 10)">Category :- {{meall.Catagory}}</h5>
-            <td><p><pre style="color:rgb(17, 17, 17);font-size:20px">{{meall.Catagory}}               {{meall.Nutrient}}</pre></p></td> 
+  <div class="product-details">
+	<a class="card__link" href="/deletecontact/{{ contact.id}}">  <b>x</b>  </a>
 
-            <td>
-        		{% if meall.Veg_Non == 'veg' %}
-            		<img style="width:50px;height:50px" src="{% static 'front/images/723633.png'%}"><font style="font-weight:bold;font-size:17px;color:rgba(75, 102, 72, 0.897)">   Veg</font>
-            	{% else %}
-                	<img style="width:50px;height:50px" src="{% static 'front/images/nveg.png'%}"><font style="font-weight:bold;font-size:17px;color:rgb(36, 36, 37)">Non-Veg</font>
-                {% endif %}
-           </td>
-           <br>
+                <!-- 	Product Name -->
+            <h3 id="name{{ id }}" class="my-3" style="color:rgb(121, 118, 88); font-size: 22px;">{{contact.name}}</h3>
+            <h6 style="color:rgb(10, 10, 10)"> <a href="mailto:votrenom@bidule.com">{{contact.email}}</a></h6>
+            <td><p><pre style="color:rgb(17, 17, 17);font-size:20px">{{contact.number}}   </pre></p></td> 
+            <br>
+<br>
+            <button style="width:65%;font-size:15px" class="btn btn-primary p-2">Répondre</button>
+
+           
+<br>
+<br>
+          
         <!-- 		<span class="hint new">New</span> -->
         <!-- 		<span class="hint free-shipping">Free Shipping</span> -->
-        <!-- 		the Product rating -->
-            <span class="hint-star star">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
-
-            </span>
+        
                 
             
         <!-- The most important information about the product -->
@@ -301,29 +294,20 @@
             
         <!-- 	Start product image & Information -->
             
-        <div class="product-image">
-            {% if meall.Name == 'tricolour salad' %}
+         <div class="product-image">
+            {% if contact.Name == 'tricolour salad' %}
             <img src="https://www.nicepng.com/png/detail/124-1244916_thai-grain-bowl-gluten-free-diet.png" alt="Omar Dsoky">
-            {% elif meall.Name == 'summer squash salad' %}
-            <img src="https://www.nicepng.com/png/detail/315-3158555_greens-bowls-kale-caesar-chicken-gluten-free-diet.png" alt="Omar Dsoky">
-            {% elif meall.Name == 'chicken minced salad' %}
-          
-            <img src="https://www.nicepng.com/png/detail/303-3036596_grilled-chicken-caesar-grilled-chicken-caesar-salad-png.png " alt="Omar Dsoky">
-            {% elif meall.Name == 'coconut lime quinoa salad' %}
-            <img src="https://www.nicepng.com/png/detail/28-282751_mcdonalds-grilled-chicken-salad-grilled-chicken-and-bacon.png" alt="Omar Dsoky">
-            {% elif meall.Name == 'hawaiin papaya salad' %}
-            <img src="https://cookingwithlane.com/wp-content/uploads/2019/12/thai-vs-lao-papaya-salad-001-720x405.jpg
-            " alt="Omar Dsoky">
+         
             {% else %}
-            <img src="https://www.nicepng.com/png/detail/124-1244916_thai-grain-bowl-gluten-free-diet.png" alt="Omar Dsoky">
+            <img src="{% static 'front/images/msg.png'%}" alt="Omar Dsoky">
 
 
         {% endif %}        <!-- 	product Information-->
         <div class="info">
             <br>
-            <h2 style="font-size:22px;">The Description</h2>
+            <h2 style="font-size:22px;">Message</h2>
             <ul>
-                <p style="font-size:15px;">{{meall.description}}</p>
+                <p style="font-size:15px;">{{contact.message}}</p>
             </ul>
         </div>
         </div>
@@ -333,70 +317,17 @@
         </div>
    
 	</div>
-    {% endif %}
 
     {% endfor %}
 
 
 </div>
   
-</div>
-
-<script>
-
-function submit() 
-{
-      let sum = "";
-      for (let salary of Object.values(ids)) {
-        sum = sum + salary+" ";
-      }   
-      console.log(sum);
-      
-      document.getElementById("inpt").value = sum;
-      
-      document.getElementById("myForm").submit();
-      
-}
 
 
-$('.cancel').click(function(){
 
-    var idv= this.value.toString();
-    
-    document.getElementById("buy-"+idv).style.display="block";
-    document.getElementById("cancel-"+idv).style.display="none";
-    
-    delete ids[idv];
 
-    console.log(ids);
-    
-});
 
-if(sessionStorage.getItem("ids")==null){
-    var ids={};
-}
 
-$('.buy').click(function(){
-
-    var idv= this.value.toString();
-    
-    document.getElementById("buy-"+idv).style.display="none";
-    document.getElementById("cancel-"+idv).style.display="block";
-    
-    if(ids["id"]!=undefined){
-        ids[idv]=ids[idv];
-    }
-    else{   
-        ids[idv]=idv;
-    }
-   
-    console.log(ids);
-    
-    document.getElementById("purchasebtn").style.visibility="visible";
-       
-});
-        
-        
-</script>
 
 {% endblock %}

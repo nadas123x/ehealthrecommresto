@@ -42,6 +42,18 @@ class Contact(models.Model):
     
     def __str__(self):
         return self.name
+
+class Reservation(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    number=models.BigIntegerField()
+    message = models.TextField(max_length=500)
+    time=models.TextField(max_length=500)
+    nbrepersonnes=models.TextField(max_length=500)
+    timestamp=models.DateTimeField(auto_now_add=True,blank=True)
+    
+    def __str__(self):
+        return self.name
     
 class Profile(models.Model):
     name = models.CharField(max_length=50)

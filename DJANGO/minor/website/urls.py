@@ -8,18 +8,31 @@ from . import SecondRecommendation
 urlpatterns = [
     path('',views.index,name="Home"),
     path('about/',views.about,name="about"),
-    path('contact/',views.contact,name="contact"),
+
+    path("contact/", views.contact, name="contact"),
+    path("reservation/", views.reservation, name="reservation"),
+    path("reservationshow/", views.reservationshow, name="reservationshow"),
+
+
+    path("contactshow/", views.contactshow, name="contactshow"),
+
     path('meal/',views.meal,name="meal"),
     path('mealaffich/',views.mealaffich,name="mealaffich"),
     path('meall/',views.meall,name="meall"),
     path('nutrient/',views.nutrient,name="nutrient"),
+    path('diet/',views.diet,name="diet"),
+
     path('emp',views.emp),
     path('show',views.show),
+        path('showusers',views.showusers),
+
     path('guidelinesuser/',views.guidelinesuser),
 
     path('edit/<int:id>',views.edit),
     path('update/<int:id>',views.update),
     path('delete/<int:id>',views.delete),
+    path('deletereservation/<int:id>',views.deletereservation),
+    path('deletecontact/<int:id>',views.deletecontact),
 
 
 

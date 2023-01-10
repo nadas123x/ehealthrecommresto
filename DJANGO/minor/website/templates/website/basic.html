@@ -37,9 +37,7 @@
 }
 
 .page-footer{
-    background-image:url('https://images.unsplash.com/photo-1535443274868-756b0f070b6e?ixlib=rb-1.2.1&w=1000&q=80');
-    background-repeat:no-repeat;
-    background-size:cover;
+   
 }
 
 #profilebtn:hover{
@@ -95,7 +93,7 @@ color:rgb(19, 18, 18);
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 
     <ul class="navbar-nav mr-auto mt-4 mt-lg-0">
       &nbsp;&nbsp; 
@@ -106,11 +104,52 @@ color:rgb(19, 18, 18);
   
 
       <li class="nav-item {% block homeactive %} {% endblock %}">
-        <a id="tab" class="nav-link" href='http://localhost:3000/'>Home <span class="sr-only">(current)</span></a>
       </li>
+      &nbsp;&nbsp; 
+      &nbsp;&nbsp; 
+      &nbsp;&nbsp; 
 
-    
-   
+
+      {% if user.is_authenticated and user.username == "0613792112" %}
+
+      <li class="nav-item ">
+        <a id="tab" class="nav-link" href="/contactshow" > List of Messages </a>
+        {% endif %}
+
+        &nbsp;&nbsp; 
+        &nbsp;&nbsp; 
+        &nbsp;&nbsp; 
+
+
+        &nbsp;&nbsp; 
+
+      {% if user.is_authenticated and user.username == "0613792112" %}
+      &nbsp;&nbsp; 
+
+      <li class="nav-item ">
+        <a id="tab" class="nav-link" href="/reservationshow" > List of Reservation </a>
+        {% endif %}
+        &nbsp;&nbsp; 
+        &nbsp;&nbsp; 
+
+        &nbsp;&nbsp; 
+
+        {% if user.is_authenticated and user.username == "0613792112" %}
+  
+          <li class="nav-item">
+          <a id="tab"  class="nav-link" href="/nutrient"> Meals</a>
+        </li>
+        {% endif %}
+
+        &nbsp;&nbsp; 
+        &nbsp;&nbsp; 
+
+        {% if user.is_authenticated and user.username == "0613792112" %}
+  
+        <li class="nav-item">
+        <a id="tab"  class="nav-link" href="/showusers">  Users</a>
+      </li>
+      {% endif %}
 
       {% if not user.is_authenticated %}
    
@@ -121,25 +160,36 @@ color:rgb(19, 18, 18);
       {% endif %}
       &nbsp;&nbsp; 
       &nbsp;&nbsp; 
-      &nbsp;&nbsp; 
-      &nbsp;&nbsp; 
 
       {% if not user.is_authenticated %}
    
+ 
+
+      {% endif %}
+     
+      
+
+      {% if not user.is_authenticated %}
+      
       <li class="nav-item ">
-        <a id="tab"  class="nav-link" href='http://localhost:3000/'>Contact Us <span class="sr-only">(current)</span></a>
+        <a id="tab" class="nav-link" href='/reservation'>Make a Reservation <span class="sr-only">(current)</span></a>
       </li>
 
       {% endif %}
-      &nbsp;&nbsp; 
-      &nbsp;&nbsp; 
-      &nbsp;&nbsp; 
       &nbsp;&nbsp; 
 
       {% if not user.is_authenticated %}
       
       <li class="nav-item ">
-        <a id="tab" class="nav-link" href='http://localhost:3000/'>Make a Reservation <span class="sr-only">(current)</span></a>
+        <a id="tab" class="nav-link" href='/contact'> Contact Us <span class="sr-only">(current)</span></a>
+      </li>
+
+      {% endif %}
+
+      {% if not user.is_authenticated %}
+      
+      <li class="nav-item ">
+        <a id="tab" class="nav-link" href=''>  Our Menu  <span class="sr-only">(current)</span></a>
       </li>
 
       {% endif %}
@@ -155,8 +205,12 @@ color:rgb(19, 18, 18);
       </li>
       {% endif %}
 
-      &nbsp;&nbsp;
-      &nbsp;&nbsp;
+      {% if user.is_authenticated and user.username == "0613792110" %}
+
+    
+    {% endif %}
+
+    
 
 	  <li class="nav-item {% block contactactive %} {% endblock %}">
       </li>
@@ -192,13 +246,15 @@ color:rgb(19, 18, 18);
 
 {% endif %}
   &nbsp;&nbsp;
-  &nbsp;&nbsp;
-  &nbsp;&nbsp; 
+
   {% if user.is_authenticated and user.username == "0613792113" or user.username == "0673915382" %}
 
   <li class="nav-item {% block mealactive %} {% endblock %}">
     <a id="tab" class="nav-link" href="/recommend/"> Recommendations </a>
 
+  </li>
+  <li class="nav-item ">
+    <a id="tab" class="nav-link" href='/contact'> Contact  <span class="sr-only">(current)</span></a>
   </li>
   {% endif %}
 
@@ -210,6 +266,13 @@ color:rgb(19, 18, 18);
 
   <li class="nav-item ">
     <a id="tab" class="nav-link" href="/show"> Guidelines </a>
+
+  </li>
+  &nbsp;&nbsp;
+  &nbsp;&nbsp;
+  
+  <li class="nav-item ">
+    <a id="tab" class="nav-link" href="/contact"> Contact </a>
 
   </li>
   {% endif %}
@@ -300,7 +363,6 @@ color:rgb(19, 18, 18);
 
 <footer class="page-footer font-small stylish-color-dark">
 
-  <div style="background-image:url('https://images.unsplash.com/photo-1535443274868-756b0f070b6e?ixlib=rb-1.2.1&w=1000&q=80');background-repeat:no-repeat;background-size:cover;" class="container text-center text-md-left">
 
     <div class="row">
 

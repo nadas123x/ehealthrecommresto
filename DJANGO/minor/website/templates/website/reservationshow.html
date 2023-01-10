@@ -1,0 +1,185 @@
+
+
+{% extends 'website/basic.html' %}
+{% block title%} Recommendation {% endblock %}
+  
+
+ {% block css %} 
+
+body {
+	background-color: black;
+	font-family: 'Open Sans', sans-serif;
+  }
+  
+.container {
+	position: absolute;
+	height: 300px;
+	width: 600px;
+	top: 170px;
+	display: inline-block;
+  }
+  
+  .card {
+	display: flex;
+	height: 280px;
+	width: 500px;
+	background-color: #877d72;
+	border-radius: 10px;
+	box-shadow: -1rem 0 3rem #000;
+  /*   margin-left: -50px; */
+	transition: 0.4s ease-out;
+	position: relative;
+	left: 0px;
+  }
+  
+  .card:not(:first-child) {
+	  margin-left: -50px;
+  }
+  
+  .card:hover {
+	transform: translateY(-20px);
+	transition: 0.4s ease-out;
+  }
+  
+  .card:hover ~ .card {
+	position: relative;
+	left: 50px;
+	transition: 0.4s ease-out;
+  }
+  
+  .title {
+	color: white;
+	font-weight: 300;
+	position: absolute;
+	left: 20px;
+	top: 15px;
+  }
+  
+  .title1 {
+	color: white;
+	font-weight: 10;
+	position: absolute;
+	left: 10px;
+	top: 48px;
+  }
+  .bar {
+	position: absolute;
+	top: 100px;
+	left: 20px;
+	height: 5px;
+	width: 150px;
+  }
+  h5{
+	color:white;
+  }
+  
+  .emptybar {
+	background-color: white;
+	width: 100%;
+	height: 100%;
+  }
+  
+  .filledbar {
+	position: absolute;
+	top: 0px;
+	z-index: 3;
+	width: 0px;
+	height: 100%;
+	background: rgb(27, 30, 31);
+	background: linear-gradient(90deg, rgb(26, 27, 27) 0%, rgb(206, 203, 197) 65%, rgb(99, 98, 96) 100%);
+	transition: 0.6s ease-out;
+  }
+  
+  .card:hover .filledbar {
+	width: 120px;
+	transition: 0.4s ease-out;
+  }
+  
+  .circle {
+	position: absolute;
+	top: 150px;
+	left: calc(50% - 60px);
+  }
+  
+  .stroke {
+	stroke: white;
+	stroke-dasharray: 360;
+	stroke-dashoffset: 360;
+	transition: 0.6s ease-out;
+  }
+  
+  svg {
+	fill: #17141d;
+	stroke-width: 2px;
+  }
+  
+  .card:hover .stroke {
+	stroke-dashoffset: 100;
+	transition: 0.6s ease-out;
+  }
+  .card__link{
+	color:white;
+	margin-left:468px;
+  }
+
+ {% endblock %}
+
+    
+ 
+ {% block homeurl %} "\"{% endblock %}
+ {% block abouturl %} "\meal/" {% endblock %}
+ {% block reservationurl %} "\reservation/" {% endblock %}
+ {% block reservationshowurl %} "\reservationshow/" {% endblock %}
+ {% block orderurl %} "\order/" {% endblock %}
+ {% block mealaffichurl %} "\mealaffich/" {% endblock %}
+
+
+        
+        {% block reservationactive %} active {% endblock %}
+
+   
+{% block body %}
+
+{% load static %}
+
+
+
+    {% for reservation in reservation %}
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<div class="container" >
+		<div class="card">
+			<a class="card__link" href="/deletereservation/{{ reservation.id}}">  <b>x</b>  </a>
+<br>
+		  <h3 class="title">{{reservation.name}}</h3>
+		  <br>
+		  <br>
+
+		 &nbsp; <h6 class="title1" >  &nbsp;  {{reservation.email}}</h6>
+
+		  <div class="bar">
+			<br>
+			<h5><b>{{reservation.number}} </b> </h5>
+			<h5 ><b> {{reservation.time}}</b> </h5>
+			<h5>Nombre de Personnes: {{reservation.nbrepersonnes}}</h5>
+
+			<div class="filledbar"></div>
+		  </div>
+		 
+		</div>
+		
+		
+    {% endfor %}
+
+</div>
+</div>
+  
+
+
+
+
+
+
+
+{% endblock %}

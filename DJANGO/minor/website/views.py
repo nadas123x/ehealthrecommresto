@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from .models import Contact
+from .models import Reservation
+
 from .models import Meal
 from .models import Meall
 from .forms import GuidelineForm
@@ -33,6 +35,10 @@ def show(request):
 	return render(request,"website/show.html",{'guidelines': guidelines})
 
 
+def showusers(request):
+	profile = Profile.objects.all() # it's select query,select all data store in guidelines varible
+	return render(request,"website/showusers.html",{'profile': profile})
+
 def edit(request,id):
 	guideline = Guideline.objects.get(id=id)
 	return render(request,"website/edit.html",{'guideline':guideline})
@@ -62,8 +68,7 @@ def index(request):
         return render(request,'website/home.html',{'image':img})
     else:
         return render(request,'website/home.html')
-
-    
+ 
 
 def about(request):
     if request.user.is_authenticated:
@@ -148,6 +153,117 @@ def contact(request):
 
 
 
+def contactshow(request):
+    contact = Contact.objects.all()
+    context ={
+       'contact': contact
+       
+    }
+    if request.method=='POST':
+        name = request.POST.get('name', 'default')
+        email = request.POST.get('email', 'default')
+        number = request.POST.get('phone', 'default')  
+        message = request.POST.get('message', 'default')
+        
+        if len(name)<3 or name.isnumeric():
+            messages.error(request,"Name should be string with more than 2 character")
+        elif len(number)!=10:
+            messages.error(request,"Number must contain 10 digits")
+        elif len(message)<10:
+            messages.error(request,"Message must contain at least 25 characters")
+        elif len(email)<5:
+            messages.error(request,"Email must contain at least 5 character")
+        else:
+            contact=Contact(name=name,email=email,number=number,message=message)
+            contact.save()
+            messages.success(request,"your message has been sent successfuly")
+            
+    if request.user.is_authenticated:
+        try:
+            img= Profile.objects.get(number=request.user.username).image.url
+        except:
+            img=""
+        return render(request,'website/contactshow.html',context)        
+    else:
+        return render(request,'website/contactshow.html',context)
+
+def deletereservation(request,id):
+	reservation = Reservation.objects.get(id=id)
+	reservation.delete()
+	return redirect("/reservationshow")
+
+
+def deletecontact(request,id):
+	contact = Contact.objects.get(id=id)
+	contact.delete()
+	return redirect("/contactshow")
+
+def reservation(request):
+    
+    if request.method=='POST':
+        name = request.POST.get('name', 'default')
+        email = request.POST.get('email', 'default')
+        number = request.POST.get('phone', 'default')  
+        message = request.POST.get('message', 'default')
+        time = request.POST.get('time', 'default')
+        nbrepersonnes = request.POST.get('nbrepersonnes', 'default')
+
+
+        
+        if len(name)<3 or name.isnumeric():
+            messages.error(request,"Name should be string with more than 2 character")
+    
+        else:
+            reservation=Reservation(name=name,email=email,number=number,message=message,time=time,nbrepersonnes=nbrepersonnes)
+            reservation.save()
+            messages.success(request,"your message has been sent successfuly")
+            
+    if request.user.is_authenticated:
+        try:
+            img= Profile.objects.get(number=request.user.username).image.url
+        except:
+            img=""
+        return render(request,'website/reservation.html',{'image':img})        
+    else:
+        return render(request,'website/reservation.html')
+
+def reservationshow(request):
+    reservation = Reservation.objects.all()
+    context ={
+       'reservation': reservation
+       
+    }
+    if request.method=='POST':
+        name = request.POST.get('name', 'default')
+        email = request.POST.get('email', 'default')
+        number = request.POST.get('phone', 'default')  
+        message = request.POST.get('message', 'default')
+        time = request.POST.get('time', 'default')
+        nbrepersonnes = request.POST.get('nbrepersonnes', 'default')
+        if len(name)<3 or name.isnumeric():
+            messages.error(request,"Name should be string with more than 2 character")
+        elif len(number)!=10:
+            messages.error(request,"Number must contain 10 digits")
+        elif len(message)<2:
+            messages.error(request,"Message must contain at least 25 characters")
+        elif len(email)<5:
+            messages.error(request,"Email must contain at least 5 character")
+        else:
+            reservation=Reservation(name=name,email=email,number=number,message=message,time=time,nbrepersonnes=nbrepersonnes)
+            reservation.save()
+            messages.success(request,"your message has been sent successfuly")
+            
+    if request.user.is_authenticated:
+        try:
+            img= Profile.objects.get(number=request.user.username).image.url
+        except:
+            img=""
+        return render(request,'website/reservationshow.html',context)        
+    else:
+        return render(request,'website/reservationshow.html',context)
+
+
+
 def meal(request):
     meal = Meal.objects.all()
     context ={
@@ -225,6 +341,9 @@ def mealaffich(request):
 
 def nutrient(request):
         return render(request,'website/nutrient.html')
+
+def diet(request):
+        return render(request,'website/diet.html')
 
 def meall(request):
     meall = Meall.objects.all()

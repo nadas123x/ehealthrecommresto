@@ -269,6 +269,11 @@ margin-left: 20%;}
 
 .signup-image {
   margin: 0 55px; }
+  .container {
+    max-width: 540px;
+    background-color: #0a0a0a;
+}
+
 
 .form-title {
   margin-bottom: 33px; }

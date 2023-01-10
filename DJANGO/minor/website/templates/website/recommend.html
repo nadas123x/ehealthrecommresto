@@ -259,6 +259,7 @@
 
 
 &ensp;
+
 <button class="btn">
     &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
     
@@ -270,11 +271,13 @@
 </button>
 
 
+
 <form id="myForm" action="\buy/" method="post">
 {% csrf_token %}
     <input id="inpt" style="display:none" type="text" name="product_buy">
 </form>
-<div id="purchasebtn" style="visibility:hidden" class="text-right"><button style="width:25%;font-size:20px" class="btn btn-primary p-2" onclick="submit()">Save All Purchases</button></div>
+<br>
+<div id="purchasebtn" style="visibility:hidden" class="text-right"><button style="width:20%; margin-left:10% ; font-size:20px" class="btn btn-primary p-2" onclick="submit()">Save All Purchases</button></div>
 
 {% load static %}
 
@@ -323,15 +326,27 @@
                     
         </div>
         <div class="product-image">
-            {% if p == 510 %}
+            {% if p == 595 %}
         
 
-            <img src="https://www.nicepng.com/png/detail/124-1244916_thai-grain-bowl-gluten-free-diet.png" alt="Omar Dsoky">
+            <img src="https://mommyshomecooking.com/wp-content/uploads/2020/06/Easy-Eggless-Orange-Cake-1.jpg" alt="Omar Dsoky">
+            {% elif  p == 685 %}
+            <img src="https://i0.wp.com/recipesgram.com/wp-content/uploads/2020/07/Pizza-Tricolour-Wedges.jpg?ssl=1" alt="Omar Dsoky">
+
+            {% elif  p == 225 %}
+            <img src="https://www.threeolivesbranch.com/wp-content/uploads/2021/03/lemon-margarita-tequila-cocktail-threeolivesbranch-6.jpg
+            " alt="Omar Dsoky">
+
+            {% elif  p == 340 %}
+            <img src="http://ahaaafood.com/wp-content/uploads/2019/09/Screenshot_20190927-082728_Gallery-1020x1026.jpg" alt="Omar Dsoky">
             {% elif  p > 410 %}
             <img src="https://www.nicepng.com/png/detail/315-3158555_greens-bowls-kale-caesar-chicken-gluten-free-diet.png" alt="Omar Dsoky">
             {% elif p > 210  %}
           
             <img src="https://www.nicepng.com/png/detail/303-3036596_grilled-chicken-caesar-grilled-chicken-caesar-salad-png.png " alt="Omar Dsoky">
+            {% elif c == '595'  %}
+          
+            <img src="https://mommyshomecooking.com/wp-content/uploads/2020/06/Easy-Eggless-Orange-Cake-1.jpg" alt="Omar Dsoky">
             {% elif p > 100 %}
             <img src="https://www.nicepng.com/png/detail/28-282751_mcdonalds-grilled-chicken-salad-grilled-chicken-and-bacon.png" alt="Omar Dsoky">            {% else %}
             {% endif %}        <!-- 	product Information-->

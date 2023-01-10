@@ -9,7 +9,7 @@
  input{
  background-color:white;
  margin-bottom:10px;
- border-radius:10px;
+ border-radius: 5px;
  color:black;
  }
  .col{
@@ -201,8 +201,9 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-lable"> <b> Description : </b></label>
 			<div class="col-sm-4">
-				<input style="width: 400px; height: 300px;" type="text" name="description" value="{{ guideline.description }}">
-			</input>
+				<textarea style="width: 400px; height: 200px;" type="text" name="description" >
+					{{ guideline.description }}
+				</textarea>
 
 			</div>
 		</div>
@@ -210,32 +211,9 @@
 		
 		&nbsp;&nbsp; 
 		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp; &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp;   &nbsp;&nbsp; 
-		&nbsp;&nbsp; 
-		&nbsp;&nbsp; <button type="submit" class="btn btn-success">Update</button>
+		
+		
+		 <button type="submit" class="btn btn-success">Update</button>
 	</div>
 
 </form>

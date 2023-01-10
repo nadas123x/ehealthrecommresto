@@ -1,17 +1,19 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Index</title>
 	{% load static %}
-	<!-- <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/> -->
+	 <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/> 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-image: url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?cs=srgb&dl=pexels-pixabay-260922.jpg&fm=jpg')" ;>
 <form method="POST" class="post-form" action="/emp">
 		{% csrf_token %}
-
-	<div class="container">
+<br>
+<br><br><br><br>
+	<div class="container" style="background-color: #e8e8e1; border-radius: 20px;">
 		<br>
 		<div class="form-group row">
 		<label class="col-sm-1 col-form-lable"></label>	
@@ -21,33 +23,25 @@
 		</div>
 	
 
-		<div class="form-group row">
-			<label class="col-sm-2 col-form-lable">Employee ID : </label>
-			<div class="col-sm-4">
-				{{ form.id }}
-			</div>
-		</div>
 
-		<div class="form-group row">
-			<label class="col-sm-2 col-form-lable">Employee Name : </label>
+		<div class="form-group row" style=" border-radius: 5px;">
+			<label class="col-sm-2 col-form-lable" style=" border-radius: 5px;"><b> Meal Name : </b></label>
 			<div class="col-sm-4">
 				{{ form.name }}
 			</div>
 		</div>
 
 		<div class="form-group row">
-			<label class="col-sm-2 col-form-lable">Employee Email : </label>
+			<label class="col-sm-2 col-form-lable"><b>Meal Description : </b></label>
 			<div class="col-sm-4">
 				{{ form.description }}
 			</div>
 		</div>
 
-		<div class="form-group row">
-			<label class="col-sm-2 col-form-lable">Employee Contact : </label>
-			<div class="col-sm-4">
-			</div>
-		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		
+		<div id="purchasebtn" class="text-right"><button type="submit"  style="width:25%;font-size:20px; background-color: #5e564f;border-color: #f1f2f3;" class="btn btn-primary p-2"  > Submit </a> </button></div>
+
+		<br>
 	</div>
 
 </form>
